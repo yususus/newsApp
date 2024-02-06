@@ -9,7 +9,17 @@ import SwiftUI
 
 struct NewsSp: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text("Teknoloji").font(.title).fontWeight(.bold).frame(width: Const.width * 0.9, alignment: .topLeading)
+        ScrollView {
+            VStack {
+                bigNews()
+                bigNews()
+                bigNews()
+                bigNews()
+                bigNews()
+                bigNews()
+            }
+        }.frame(width: Const.width * 0.9)
     }
 }
 
