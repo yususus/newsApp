@@ -8,9 +8,16 @@
 import SwiftUI
 
 struct FeedView: View {
+    @State var show = false
     var body: some View {
         VStack {
             Spacer()
+            Button{
+                show.toggle()
+            } label: {
+                Image("Union").resizable().frame(width: Const.width * 0.08,height: Const.height * 0.03).frame(width:Const.width * 0.9, alignment: .leading)
+            }
+            
             Text("News").font(.title).fontWeight(.bold).frame(width: Const.width * 0.85, alignment: .leading)
             ScrollView{
                 Text("Teknoloji").font(.title).fontWeight(.bold)

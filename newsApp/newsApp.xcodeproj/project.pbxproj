@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		88306C2A2B73A33B00F831EB /* DrawerMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88306C292B73A33B00F831EB /* DrawerMenu.swift */; };
 		8851D3382B721204002EDA1E /* newsAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8851D3372B721204002EDA1E /* newsAppApp.swift */; };
 		8851D33A2B721204002EDA1E /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8851D3392B721204002EDA1E /* FeedView.swift */; };
 		8851D33C2B721206002EDA1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8851D33B2B721206002EDA1E /* Assets.xcassets */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		88306C292B73A33B00F831EB /* DrawerMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerMenu.swift; sourceTree = "<group>"; };
 		8851D3342B721204002EDA1E /* newsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = newsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8851D3372B721204002EDA1E /* newsAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newsAppApp.swift; sourceTree = "<group>"; };
 		8851D3392B721204002EDA1E /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 				8851D34E2B721A56002EDA1E /* mainNews.swift */,
 				8851D3522B721BBE002EDA1E /* Const.swift */,
 				8851D3542B722BBC002EDA1E /* bigNews.swift */,
+				88306C292B73A33B00F831EB /* DrawerMenu.swift */,
 			);
 			path = Items;
 			sourceTree = "<group>";
@@ -167,6 +170,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8851D33A2B721204002EDA1E /* FeedView.swift in Sources */,
+				88306C2A2B73A33B00F831EB /* DrawerMenu.swift in Sources */,
 				8851D3382B721204002EDA1E /* newsAppApp.swift in Sources */,
 				8851D3552B722BBC002EDA1E /* bigNews.swift in Sources */,
 				8851D34F2B721A56002EDA1E /* mainNews.swift in Sources */,
