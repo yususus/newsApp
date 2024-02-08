@@ -8,54 +8,41 @@
 import SwiftUI
 
 struct FeedView: View {
-    @State var show = false
+    @State var showDrawer = false
     var body: some View {
-        VStack {
-            Spacer()
-            Button{
-                show.toggle()
-            } label: {
-                Image("Union").resizable().frame(width: Const.width * 0.08,height: Const.height * 0.03).frame(width:Const.width * 0.9, alignment: .leading)
-            }
-            
-            Text("News").font(.title).fontWeight(.bold).frame(width: Const.width * 0.85, alignment: .leading)
-            ScrollView{
-                Text("Teknoloji").font(.title).fontWeight(.bold)
-                
-                ScrollView(.horizontal){
-                    HStack{
-                        small()
-                        small()
-                        small()
+        ZStack {
+            VStack {
+                Image("Union").resizable().frame(width: Const.width * 0.08,height: Const.height * 0.03).frame(width:Const.width * 0.9, alignment: .leading).padding(.top, Const.height * 0.05)
+                    .onTapGesture {
+                        showDrawer = true
                     }
-                }
+                
+                
+                ScrollView{
                     
-                
-                Text("Spor").font(.title).fontWeight(.bold)
-                ScrollView(.horizontal){
-                    HStack{
-                        small()
-                        small()
-                        small()
-                    }
-                }
-                Text("Bilim").font(.title).fontWeight(.bold)
-                ScrollView(.horizontal){
-                    HStack{
-                        small()
-                        small()
-                        small()
-                    }
-                }
-                Text("Ekonomi").font(.title).fontWeight(.bold)
-                ScrollView(.horizontal){
-                    HStack{
-                        small()
-                        small()
-                        small()
-                    }
-                }
-            }.frame(width: Const.width * 0.9)
+                    newsss(text: "Teknoloji")
+                    newsss(text: "Spor")
+                    newsss(text: "Bilim")
+                    newsss(text: "Ekonomi")
+                }.frame(width: Const.width * 0.95)
+            }
+            DrawerMenu(isOpen: $showDrawer) // Present DrawerMenu as a sheet
+                .offset(x: showDrawer ? 0 : Const.width * 1)
+        }
+    }
+}
+
+struct newsss: View {
+    var text : String
+    var body: some View {
+        Text(text).font(.title).fontWeight(.bold).frame(width: Const.width * 0.95, alignment: .leading)
+        ScrollView(.horizontal){
+            HStack{
+                small()
+                small()
+                small()
+                small()
+            }
         }
     }
 }
