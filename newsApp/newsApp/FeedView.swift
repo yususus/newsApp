@@ -9,6 +9,7 @@ import SwiftUI
 
 struct FeedView: View {
     @State var showDrawer = false
+    @State var selectedCategory = "Teknoloji"
     var body: some View {
         ZStack {
             VStack {
@@ -17,35 +18,42 @@ struct FeedView: View {
                         showDrawer = true
                     }
                 
-                
                 ScrollView{
-                    
                     newsss(text: "Teknoloji")
                     newsss(text: "Spor")
                     newsss(text: "Bilim")
                     newsss(text: "Ekonomi")
                 }.frame(width: Const.width * 0.95)
             }
-            DrawerMenu(isOpen: $showDrawer) // Present DrawerMenu as a sheet
+            DrawerMenu(isOpen: $showDrawer, selectedCategory: $selectedCategory)
                 .offset(x: showDrawer ? 0 : Const.width * 1)
+            
         }
     }
 }
 
 struct newsss: View {
     var text : String
+    
+    @State private var showSmallViews = false
+    
     var body: some View {
         Text(text).font(.title).fontWeight(.bold).frame(width: Const.width * 0.95, alignment: .leading)
-        ScrollView(.horizontal){
-            HStack{
-                small()
-                small()
-                small()
-                small()
-            }
+        ScrollView(.horizontal, showsIndicators: false){
+            HStack {
+                ForEach(0..<10) { index in
+                    small()
+                }
+            }.onAppear(perform: {
+                withAnimation {
+                    showSmallViews = true
+                }
+            })
         }
+        
     }
 }
+
 
 #Preview {
     FeedView()

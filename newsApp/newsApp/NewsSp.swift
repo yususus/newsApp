@@ -8,18 +8,29 @@
 import SwiftUI
 
 struct NewsSp: View {
+    @State var showDrawer = false
+    @State var selectedCategory = "Teknoloji"
     var body: some View {
-        Text("Teknoloji").font(.title).fontWeight(.bold).frame(width: Const.width * 0.9, alignment: .topLeading)
-        ScrollView {
+        ZStack {
             VStack {
-                bigNews()
-                bigNews()
-                bigNews()
-                bigNews()
-                bigNews()
-                bigNews()
+                Image("Union").resizable().frame(width: Const.width * 0.08,height: Const.height * 0.03).frame(width:Const.width * 0.9, alignment: .leading).padding(.top, Const.height * 0.05)
+                    .onTapGesture {
+                        showDrawer = true
+                    }
+                Text(selectedCategory).font(.title).fontWeight(.bold).frame(width: Const.width * 0.9, alignment: .topLeading)
+                ScrollView {
+                    VStack {
+                        ForEach(0..<10) { index in
+                            bigNews()
+                        }
+                        
+                    }
+                }.frame(width: Const.width * 0.9)
             }
-        }.frame(width: Const.width * 0.9)
+            DrawerMenu(isOpen: $showDrawer, selectedCategory: $selectedCategory)
+                .offset(x: showDrawer ? 0 : Const.width * 1)
+        }
+        
     }
 }
 
