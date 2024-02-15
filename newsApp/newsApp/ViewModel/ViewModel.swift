@@ -6,8 +6,11 @@
 //
 
 import Foundation
+import SwiftUI
 import SwiftyJSON
 import SDWebImageSwiftUI
+import WebKit
+
 
 struct dataType: Identifiable{
     var id: String
@@ -50,5 +53,19 @@ class getData : ObservableObject {
             }
         }.resume()
     }
+}
+
+struct webView : UIViewRepresentable{
+    
+    var url: String
+    func makeUIView(context: UIViewRepresentableContext<webView>) -> WKWebView {
+        let view = WKWebView()
+        view.load(URLRequest(url: URL(string: url)!))
+        return view
+    }
+    func updateUIView(_ uiView: WKWebView, context: UIViewRepresentableContext<webView>) {
+        
+    }
+    
 }
 
