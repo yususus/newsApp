@@ -26,7 +26,7 @@ struct DrawerMenu: View {
                     DrawerMenuButton(action: {selectedCategory = "Economy"}, label: "Economy")
                     DrawerMenuButton(action: {selectedCategory = "Science"}, label: "Science")
                     DrawerMenuButton(action: {selectedCategory = "Technology"}, label: "Technology")
-                    DrawerMenuButton(action: {selectedCategory = "Magazines"}, label: "Magazines")
+                    DrawerMenuButton(action: {selectedCategory = "magazines"}, label: "Magazines")
                 }
                 
                 Spacer()
