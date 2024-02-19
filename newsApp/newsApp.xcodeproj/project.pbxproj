@@ -20,7 +20,6 @@
 		8851D3482B7219C3002EDA1E /* NewsAll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8851D3472B7219C3002EDA1E /* NewsAll.swift */; };
 		8851D34A2B7219D7002EDA1E /* NewsSp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8851D3492B7219D7002EDA1E /* NewsSp.swift */; };
 		8851D34D2B721A4B002EDA1E /* small.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8851D34C2B721A4B002EDA1E /* small.swift */; };
-		8851D34F2B721A56002EDA1E /* mainNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8851D34E2B721A56002EDA1E /* mainNews.swift */; };
 		8851D3532B721BBE002EDA1E /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8851D3522B721BBE002EDA1E /* Const.swift */; };
 		8851D3552B722BBC002EDA1E /* bigNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8851D3542B722BBC002EDA1E /* bigNews.swift */; };
 		88D843812B7E2F5F005F2E09 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 88D843802B7E2F5F005F2E09 /* SDWebImageSwiftUI */; };
@@ -39,7 +38,6 @@
 		8851D3472B7219C3002EDA1E /* NewsAll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAll.swift; sourceTree = "<group>"; };
 		8851D3492B7219D7002EDA1E /* NewsSp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsSp.swift; sourceTree = "<group>"; };
 		8851D34C2B721A4B002EDA1E /* small.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = small.swift; sourceTree = "<group>"; };
-		8851D34E2B721A56002EDA1E /* mainNews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainNews.swift; sourceTree = "<group>"; };
 		8851D3522B721BBE002EDA1E /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
 		8851D3542B722BBC002EDA1E /* bigNews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bigNews.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -112,7 +110,6 @@
 			isa = PBXGroup;
 			children = (
 				8851D34C2B721A4B002EDA1E /* small.swift */,
-				8851D34E2B721A56002EDA1E /* mainNews.swift */,
 				8851D3522B721BBE002EDA1E /* Const.swift */,
 				8851D3542B722BBC002EDA1E /* bigNews.swift */,
 				88306C292B73A33B00F831EB /* DrawerMenu.swift */,
@@ -206,7 +203,6 @@
 				8851D3382B721204002EDA1E /* newsAppApp.swift in Sources */,
 				881E670B2B7B8149001E784F /* ViewModel.swift in Sources */,
 				8851D3552B722BBC002EDA1E /* bigNews.swift in Sources */,
-				8851D34F2B721A56002EDA1E /* mainNews.swift in Sources */,
 				8851D3482B7219C3002EDA1E /* NewsAll.swift in Sources */,
 				8851D34D2B721A4B002EDA1E /* small.swift in Sources */,
 				8851D3532B721BBE002EDA1E /* Const.swift in Sources */,

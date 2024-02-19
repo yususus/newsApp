@@ -8,16 +8,19 @@
 import SwiftUI
 
 struct small: View {
+    var title : String
+    var desc: String
+    var images : String
     var body: some View {
         VStack{
-            Image("c3").resizable().scaledToFit().frame(width: Const.width * 0.4)
-            Text("Haber Başlığı").font(.title3).fontWeight(.bold).frame(width: Const.width * 0.45,height: Const.height * 0.025,alignment: .leading)
-            Text("Haber içeriği dasdla mdskaldsa mdkslaad...").frame(width: Const.width * 0.45,height: Const.height * 0.05,alignment: .leading)
+            Image(images).resizable().scaledToFit().frame(width: Const.width * 0.4)
+            Text(title).font(.title3).fontWeight(.bold).frame(width: Const.width * 0.45,height: Const.height * 0.025,alignment: .leading)
+            Text(desc).frame(width: Const.width * 0.45,height: Const.height * 0.05,alignment: .leading)
         }.frame(width: Const.width * 0.5, height: Const.height * 0.25).background(Color.secondary).cornerRadius(10)
         
     }
 }
 
 #Preview {
-    small()
+    small(title: "Haber Başlığı", desc: "Haber içeriği dasdla mdskaldsa mdkslaad...", images: "c3")
 }

@@ -22,10 +22,10 @@ struct DrawerMenu: View {
                 Text("Categories").font(.title2).fontWeight(.bold).padding()
                 ScrollView{
                     DrawerMenuButton(action: {selectedCategory = "Home"}, label: "Home")
-                    DrawerMenuButton(action: {selectedCategory = "Sports"}, label: "Sports")
+                    DrawerMenuButton(action: {selectedCategory = "Spor"}, label: "Sports")
                     DrawerMenuButton(action: {selectedCategory = "Economy"}, label: "Economy")
                     DrawerMenuButton(action: {selectedCategory = "Science"}, label: "Science")
-                    DrawerMenuButton(action: {selectedCategory = "Technology"}, label: "Technology")
+                    DrawerMenuButton(action: {selectedCategory = "Teknoloji"}, label: "Technology")
                     DrawerMenuButton(action: {selectedCategory = "magazines"}, label: "Magazines")
                 }
                 
@@ -51,5 +51,5 @@ struct DrawerMenuButton: View {
 }
 
 #Preview {
-    DrawerMenu(isOpen: .constant(true), selectedCategory: .constant("Teknoloji"))
+    DrawerMenu(isOpen: .constant(true), selectedCategory: .constant("Spor"))
 }

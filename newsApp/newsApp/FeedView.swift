@@ -42,7 +42,7 @@ struct newsss: View {
         ScrollView(.horizontal, showsIndicators: false){
             HStack {
                 ForEach(0..<10) { index in
-                    small()
+                    small(title: "haber baş", desc: "içerik kısmı", images: "c3")
                 }
             }.onAppear(perform: {
                 withAnimation {
