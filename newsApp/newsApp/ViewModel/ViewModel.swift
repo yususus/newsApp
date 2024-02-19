@@ -23,15 +23,20 @@ struct dataType: Identifiable{
 
 class getData : ObservableObject {
     @Published var datas = [dataType]()
-    var urls = ["Teknoloji": "https://newsapi.org/v2/everything?q=technology&from=2024-01-15&sortBy=publishedAt&apiKey=5029c26cde67444ebdc6b737b9586203",
-            "Spor": "https://newsapi.org/v2/everything?q=sports&from=2024-01-15&sortBy=publishedAt&apiKey=5029c26cde67444ebdc6b737b9586203",
-                "Magazin":"https://newsapi.org/v2/everything?q=magazines&from=2024-01-19&sortBy=publishedAt&apiKey=5029c26cde67444ebdc6b737b9586203",
+    var urls = ["Teknoloji": "https://newsapi.org/v2/everything?q=technology&from=2024-01-19&sortBy=publishedAt&apiKey=5029c26cde67444ebdc6b737b9586203",
+            "Spor": "https://newsapi.org/v2/everything?q=sports&from=2024-01-19&sortBy=publishedAt&apiKey=5029c26cde67444ebdc6b737b9586203",
+                "Magazin":"https://newsapi.org/v2/everything?q=magazines&from=2024-01-15&sortBy=publishedAt&apiKey=5029c26cde67444ebdc6b737b9586203",
                 "Bilim": "https://newsapi.org/v2/everything?q=science&from=2024-01-19&sortBy=publishedAt&apiKey=5029c26cde67444ebdc6b737b9586203",
                 "Ekonomi": "https://newsapi.org/v2/everything?q=economy&from=2024-01-19&sortBy=publishedAt&apiKey=5029c26cde67444ebdc6b737b9586203"
             ]
     
-    init(){
-        let source = "https://newsapi.org/v2/everything?q=technology&from=2024-01-15&sortBy=publishedAt&apiKey=5029c26cde67444ebdc6b737b9586203"
+    init(category: String){
+            fetchCategoryData(category: category)
+        }
+        
+        func fetchCategoryData(category: String) {
+            self.datas.removeAll() // Önceki kategorinin verilerini temizle
+            guard let source = urls[category] else { return }
         
         let url = URL(string: source)!
         

@@ -23,10 +23,10 @@ struct DrawerMenu: View {
                 ScrollView{
                     DrawerMenuButton(action: {selectedCategory = "Home"}, label: "Home")
                     DrawerMenuButton(action: {selectedCategory = "Spor"}, label: "Sports")
-                    DrawerMenuButton(action: {selectedCategory = "Economy"}, label: "Economy")
-                    DrawerMenuButton(action: {selectedCategory = "Science"}, label: "Science")
+                    DrawerMenuButton(action: {selectedCategory = "Ekonomi"}, label: "Economy")
+                    DrawerMenuButton(action: {selectedCategory = "Bilim"}, label: "Science")
                     DrawerMenuButton(action: {selectedCategory = "Teknoloji"}, label: "Technology")
-                    DrawerMenuButton(action: {selectedCategory = "magazines"}, label: "Magazines")
+                    DrawerMenuButton(action: {selectedCategory = "Magazin"}, label: "Magazines")
                 }
                 
                 Spacer()
