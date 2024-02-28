@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct DrawerMenu: View {
+    @StateObject var getData = GetData()
     @Binding var isOpen : Bool
     @Binding var selectedCategory: String
     var body: some View {
@@ -21,12 +22,13 @@ struct DrawerMenu: View {
                 Image("c3").resizable().aspectRatio(contentMode: .fit).frame(width: Const.width * 0.3, height: Const.height * 0.1).padding().padding(.top, 25)
                 Text("Categories").font(.title2).fontWeight(.bold).padding()
                 ScrollView{
-                    DrawerMenuButton(action: {selectedCategory = "Home"}, label: "Home")
-                    DrawerMenuButton(action: {selectedCategory = "Spor"}, label: "Sports")
-                    DrawerMenuButton(action: {selectedCategory = "Ekonomi"}, label: "Economy")
-                    DrawerMenuButton(action: {selectedCategory = "Bilim"}, label: "Science")
-                    DrawerMenuButton(action: {selectedCategory = "Teknoloji"}, label: "Technology")
-                    DrawerMenuButton(action: {selectedCategory = "Magazin"}, label: "Magazines")
+                    
+                    DrawerMenuButton(label: "Home", adress: "Home")
+                    DrawerMenuButton(label: "Sports", adress: "sports")
+                    DrawerMenuButton(label: "Economy", adress: "economy")
+                    DrawerMenuButton(label: "Science", adress: "science")
+                    DrawerMenuButton(label: "Technology", adress: "technology")
+                    DrawerMenuButton(label: "Magazines", adress: "magazines")
                 }
                 
                 Spacer()
@@ -38,11 +40,13 @@ struct DrawerMenu: View {
 }
 
 struct DrawerMenuButton: View {
-    var action: () -> Void
+    @StateObject var getData = GetData()
     var label: String
-    
+    var adress: String
     var body: some View {
-        Button(action: action) {
+        Button(action: {
+            getData.fetchCategoryData(for: adress)
+        }) {
             Text(label)
                 .foregroundStyle(Color.black)
                 .fontWeight(.bold)

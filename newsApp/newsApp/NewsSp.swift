@@ -9,37 +9,43 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct NewsSp: View {
-    @State var showDrawer = false
-    @State var selectedCategory = "Spor"{
-        didSet {
-            list.fetchCategoryData(category: selectedCategory)
-        }
-    }
-    @ObservedObject var list = getData(category: "Spor")
+    @StateObject var getData = GetData()
+    
     var body: some View {
-        ZStack {
-                    NavigationView{
-                        List(list.datas){i in
-                            NavigationLink(destination: webView(url: i.url)
-                                .navigationBarTitle("", displayMode: .inline)) {
-                                HStack(){
-                                    bigNews(title: i.title, descrip: i.desc, images: i.image)
-
-                                }.padding(.vertical, 15)
-                            }
-                            
-                        }.navigationBarTitle(selectedCategory)
-                            .navigationBarItems(leading: Image("Union").resizable().frame(width: Const.width * 0.08,height: Const.height * 0.03).frame(width:Const.width * 0.9, alignment: .leading).padding(.top, Const.height * 0.01)
-                                .onTapGesture {
-                                    showDrawer = true
-                                })
-                    }
-                    DrawerMenu(isOpen: $showDrawer, selectedCategory: $selectedCategory)
-                        .offset(x: showDrawer ? 0 : Const.width * 1)
+        VStack {
+            ScrollView(.horizontal) {
+                HStack{
+                    NewsButton(news: "Science")
+                    NewsButton(news: "Magazines")
+                    NewsButton(news: "Sports")
+                    NewsButton(news: "Technology")
+                    
+                    Button(action: {
+                        getData.fetchCategoryData(for: "technology")
+                    }) {
+                        Text("Tech News")
+                    }.padding()
+                }
+            }.frame(height: Const.height * 0.06)
             
+            
+            
+            
+            NavigationView {
+                List(getData.datas, id: \.self) { item in
+                    NavigationLink(destination: webView(url: item.url)
+                        .navigationBarTitle("", displayMode: .inline)) {
+                            HStack {
+                                bigNews(title: item.title, descrip: item.desc, images: item.image)
+                            }
+                            .padding(.vertical, 15)
+                        }
+                }
+            }
         }
     }
 }
+
 #Preview {
     NewsSp()
 }

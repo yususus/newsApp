@@ -8,11 +8,29 @@
 import SwiftUI
 
 struct NewsButton: View {
+    @StateObject var getData = GetData()
+    @State var news: String
+    //var action: () -> Void
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Button(action: {
+            getData.fetchCategoryData(for: news)
+        }) {
+            Text("\(news) News").foregroundStyle(Color.black)
+        }.frame(width: Const.width * 0.38, height: Const.height * 0.05).background(Const.rectangleColor).cornerRadius(3)
+            .padding()
     }
+    /*
+    var body: some View {
+        Button(action: {
+            getData.fetchCategoryData(for: news)
+        }) {
+            Text("\(news) News").foregroundStyle(Color.black)
+        }.frame(width: Const.width * 0.38, height: Const.height * 0.05).background(Const.rectangleColor).cornerRadius(3)
+            .padding()
+    }*/
 }
-
+/*
 #Preview {
-    NewsButton()
+    NewsButton( news: "Science")
 }
+ */

@@ -12,7 +12,7 @@ import SDWebImageSwiftUI
 import WebKit
 
 
-struct dataType: Identifiable{
+struct dataType: Identifiable, Hashable{
     var id: String
     var desc : String
     var title : String
@@ -21,49 +21,57 @@ struct dataType: Identifiable{
     
 }
 
-class getData : ObservableObject {
+class GetData : ObservableObject {
     @Published var datas = [dataType]()
-    var urls = ["Teknoloji": "https://newsapi.org/v2/everything?q=technology&from=2024-01-19&sortBy=publishedAt&apiKey=5029c26cde67444ebdc6b737b9586203",
-            "Spor": "https://newsapi.org/v2/everything?q=sports&from=2024-01-19&sortBy=publishedAt&apiKey=5029c26cde67444ebdc6b737b9586203",
-                "Magazin":"https://newsapi.org/v2/everything?q=magazines&from=2024-01-15&sortBy=publishedAt&apiKey=5029c26cde67444ebdc6b737b9586203",
-                "Bilim": "https://newsapi.org/v2/everything?q=science&from=2024-01-19&sortBy=publishedAt&apiKey=5029c26cde67444ebdc6b737b9586203",
-                "Ekonomi": "https://newsapi.org/v2/everything?q=economy&from=2024-01-19&sortBy=publishedAt&apiKey=5029c26cde67444ebdc6b737b9586203"
-            ]
     
-    init(category: String){
-            fetchCategoryData(category: category)
+    func fetchCategoryData(for category: String) {
+        
+        guard let url = URL(string: "https://newsapi.org/v2/everything?q=\(category)&from=2024-01-28&sortBy=publishedAt&apiKey=5029c26cde67444ebdc6b737b9586203") else {
+            print("Invalid URL")
+            return
         }
         
-        func fetchCategoryData(category: String) {
-            self.datas.removeAll() // Önceki kategorinin verilerini temizle
-            guard let source = urls[category] else { return }
-        
-        let url = URL(string: source)!
-        
-        let session = URLSession(configuration: .default)
-        
-        session.dataTask(with: url) {(data, _, error) in
-            if error != nil{
-                print((error?.localizedDescription)!)
+        URLSession.shared.dataTask(with: url) { data, _, error in
+            if let error = error {
+                print("Error: \(error.localizedDescription)")
                 return
             }
             
-            let json = try! JSON(data: data!)
-            
-            for i in json["articles"]{
-                
-                let title = i.1["title"].stringValue
-                let description = i.1["description"].stringValue
-                let url = i.1["url"].stringValue
-                let image = i.1["urlToImage"].stringValue
-                let id = i.1["publishedAt"].stringValue
-                
-                DispatchQueue.main.async {
-                    self.datas.append(dataType(id: id, desc: description, title: title, url: url, image: image))
-                }
-            }
+            guard let data = data else {
+                            print("No data returned from API")
+                            return
+                        }
+                        
+                        do {
+                            let response = try JSONDecoder().decode(NewsResponse.self, from: data)
+                            DispatchQueue.main.async {
+                                self.datas = response.articles.map {
+                                    dataType(
+                                        id: $0.publishedAt,
+                                        desc: $0.description ?? "",
+                                        title: $0.title,
+                                        url: $0.url,
+                                        image: $0.urlToImage ?? ""
+                                    )
+                                }
+                            }
+                        } catch {
+                            print("Error decoding JSON: \(error.localizedDescription)")
+                        }
         }.resume()
     }
+}
+
+struct NewsResponse: Decodable {
+    let articles: [ArticleResponse]
+}
+
+struct ArticleResponse: Decodable {
+    let publishedAt: String
+    let title: String
+    let description: String?
+    let url: String
+    let urlToImage: String?
 }
 
 struct webView : UIViewRepresentable{
