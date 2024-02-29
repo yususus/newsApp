@@ -26,7 +26,7 @@ class GetData : ObservableObject {
     
     func fetchCategoryData(for category: String) {
         
-        guard let url = URL(string: "https://newsapi.org/v2/everything?q=\(category)&from=2024-01-28&sortBy=publishedAt&apiKey=5029c26cde67444ebdc6b737b9586203") else {
+        guard let url = URL(string: "https://newsapi.org/v2/everything?q=\(category)&from=2024-02-13&sortBy=publishedAt&apiKey=5029c26cde67444ebdc6b737b9586203") else {
             print("Invalid URL")
             return
         }

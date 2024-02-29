@@ -15,15 +15,17 @@ struct bigNews: View {
     var body: some View {
         VStack{
             if images != ""{
-                WebImage(url: URL(string: images)!,options: .highPriority, context: nil).resizable().frame(width: Const.width * 0.8, height: Const.height * 0.2)
+                WebImage(url: URL(string: images)!,options: .highPriority, context: nil).resizable().frame(width: Const.width * 0.9, height: Const.height * 0.3)
             }
             /*Image(images).resizable().scaledToFit().frame(width: Const.width * 0.8, height: Const.height * 0.2)*/
-            Text(title).font(.title3).fontWeight(.bold).frame(width: Const.width * 0.7,height: Const.height * 0.033,alignment: .leading)
-            Text(descrip).frame(width: Const.width * 0.7, height: Const.height * 0.05,alignment: .leading)
-        }.frame(width: Const.width * 0.9, height: Const.height * 0.35).background(Color.secondary).cornerRadius(10)
+            Spacer()
+            Text(title).font(.custom("Baloo2", size: 22)).fontWeight(.bold).frame(width: Const.width * 0.8,height: Const.height * 0.05,alignment: .leading).foregroundColor(.black)
+            Text(descrip).font(.custom("Baloo2", size: 16)).frame(width: Const.width * 0.8, height: Const.height * 0.05,alignment: .leading).foregroundColor(.black)
+            Spacer()
+        }.frame(width: Const.width * 0.9, height: Const.height * 0.45).background(Color.cyan.blur(radius: 10).opacity(0.9)).cornerRadius(10).shadow(radius: 10)
     }
 }
 
 #Preview {
-    bigNews(title: "a", descrip: "b", images: "c3")
+    bigNews(title: "Bu haber baya önemli bir haber dasdada", descrip: "Bu haber alt metni çok öenmsiz bir haberin alt metni olabilir boşverin çok fazla okumayın", images: "c3")
 }

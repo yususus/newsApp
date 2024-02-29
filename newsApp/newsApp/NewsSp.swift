@@ -12,37 +12,38 @@ struct NewsSp: View {
     @StateObject var getData = GetData()
     
     var body: some View {
-        VStack {
-            ScrollView(.horizontal) {
-                HStack{
-                    NewsButton(news: "Science")
-                    NewsButton(news: "Magazines")
-                    NewsButton(news: "Sports")
-                    NewsButton(news: "Technology")
-                    
-                    Button(action: {
-                        getData.fetchCategoryData(for: "technology")
-                    }) {
-                        Text("Tech News")
-                    }.padding()
-                }
-            }.frame(height: Const.height * 0.06)
-            
-            
-            
-            
-            NavigationView {
-                List(getData.datas, id: \.self) { item in
-                    NavigationLink(destination: webView(url: item.url)
-                        .navigationBarTitle("", displayMode: .inline)) {
-                            HStack {
+        NavigationView {
+            VStack {
+                ScrollView(.horizontal) {
+                    HStack{
+                        NewsButton(news: "Popular")
+                        NewsButton(news: "Science")
+                        NewsButton(news: "Magazines")
+                        NewsButton(news: "Sports")
+                        NewsButton(news: "Technology")
+                    }
+                }.frame(height: Const.height * 0.06).background(Const.backColor)
+                
+                ScrollView(.vertical) {
+                    ForEach(getData.datas, id: \.self) { item in
+                        NavigationLink(destination: webView(url: item.url)
+                            .navigationBarTitle("", displayMode: .inline)) {
                                 bigNews(title: item.title, descrip: item.desc, images: item.image)
+                                    .padding()
                             }
-                            .padding(.vertical, 15)
-                        }
-                }
+                    }
+                }.frame(width: Const.width).background(Color.brown.blur(radius: 50).opacity(0.4))
             }
         }
+    }
+    @ViewBuilder
+    func NewsButton(news: String)->  some View {
+        
+        Button(action: {
+            getData.fetchCategoryData(for: news)
+        }) {
+            Text("\(news) News").foregroundColor(Color.black)
+        }.buttonStyle(PressedButtonStyle())
     }
 }
 
