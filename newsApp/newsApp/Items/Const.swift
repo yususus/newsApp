@@ -17,7 +17,9 @@ class Const{
     static let backColor = Color(UIColor(hex: "13182B"))
 }
 struct PressedButtonStyle: ButtonStyle {
+    @State var isPressed: Bool
     func makeBody(configuration: Self.Configuration) -> some View {
+        
         configuration.label
             .frame(width: Const.width * 0.38, height: Const.height * 0.05)
             .background(configuration.isPressed ? Const.rectangleColor.opacity(0.5) : Const.rectangleColor)

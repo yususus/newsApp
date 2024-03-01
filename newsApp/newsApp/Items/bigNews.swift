@@ -17,6 +17,9 @@ struct bigNews: View {
             if images != ""{
                 WebImage(url: URL(string: images)!,options: .highPriority, context: nil).resizable().frame(width: Const.width * 0.9, height: Const.height * 0.3)
             }
+            else {
+                Image("c5").resizable()
+            }
             /*Image(images).resizable().scaledToFit().frame(width: Const.width * 0.8, height: Const.height * 0.2)*/
             Spacer()
             Text(title).font(.custom("Baloo2", size: 22)).fontWeight(.bold).frame(width: Const.width * 0.8,height: Const.height * 0.05,alignment: .leading).foregroundColor(.black)

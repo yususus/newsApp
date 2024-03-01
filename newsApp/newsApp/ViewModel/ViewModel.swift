@@ -24,6 +24,12 @@ struct dataType: Identifiable, Hashable{
 class GetData : ObservableObject {
     @Published var datas = [dataType]()
     
+        
+        init() {
+            // datas değişkenini tanımlarken, Popular kategorisini parametre olarak verin
+            fetchCategoryData(for: "Popular")
+        }
+    
     func fetchCategoryData(for category: String) {
         
         guard let url = URL(string: "https://newsapi.org/v2/everything?q=\(category)&from=2024-02-13&sortBy=publishedAt&apiKey=5029c26cde67444ebdc6b737b9586203") else {

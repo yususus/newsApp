@@ -17,12 +17,14 @@ struct NewsSp: View {
                 ScrollView(.horizontal) {
                     HStack{
                         NewsButton(news: "Popular")
+                        NewsButton(news: "World")
                         NewsButton(news: "Science")
                         NewsButton(news: "Magazines")
                         NewsButton(news: "Sports")
+                        NewsButton(news: "Life")
                         NewsButton(news: "Technology")
                     }
-                }.frame(height: Const.height * 0.06).background(Const.backColor)
+                }.frame(height: Const.height * 0.06).background(Color.brown.blur(radius: 50).opacity(0.4))
                 
                 ScrollView(.vertical) {
                     ForEach(getData.datas, id: \.self) { item in
@@ -43,7 +45,7 @@ struct NewsSp: View {
             getData.fetchCategoryData(for: news)
         }) {
             Text("\(news) News").foregroundColor(Color.black)
-        }.buttonStyle(PressedButtonStyle())
+        }.buttonStyle(PressedButtonStyle(isPressed: true)).padding(.leading,5)
     }
 }
 
